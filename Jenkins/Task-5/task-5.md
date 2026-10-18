@@ -35,6 +35,7 @@ Plugin Installation Process:
    - SSH Build Agents Plugin
 5. Select: Restart Jenkins when installation is complete and no jobs are running
 
+![alt text](image-4.png)
 
 Plugin Details:
 
@@ -43,8 +44,6 @@ SSH Credentials Plugin: Manages SSH credentials for secure connections.
 SSH Build Agents Plugin: Supports SSH-based build agents for remote execution.
 Post-Installation: Jenkins restarts to apply plugins.
 
-
-![alt text](image-6.png)
 
 SSH Host Configuration Process:
 
@@ -57,6 +56,7 @@ SSH Host Configuration Process:
 5. Verify: Connection successful
 6. Click: Save
 
+![alt text](image-6.png)
 
 ![alt text](image-5.png)
 
@@ -81,7 +81,7 @@ SSH Host Configuration Process:
 
 ![alt text](image-10.png)
 
-![alt text](image-4.png)
+
 
 ![alt text](image-9.png)
 
