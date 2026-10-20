@@ -44,66 +44,48 @@ Search for Git. Select Gitea, SSH & Publish over SSH plugin and click Download n
 
 ![alt text](image-3.png)
 
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+
+![alt text](image-14.png)
+
+![alt text](image-15.png)
+
 ### Create a job
 
 ![alt text](image-4.png)
 
-```bash
-//
-// Setup up the Remote connection for SSH Build Pipeline step
-//
-def remote = [:]
-remote.name = 'ststor01'
-remote.host = 'ststor01'
-remote.user = 'natasha'
-remote.password = 'Bl@kW'
-remote.allowAnyHosts = true   
-            
-pipeline {
-    // Run on agent with label 'ststor01'
-    agent { label 'ststor01' }
+![alt text](image-5.png)
 
-    // Pipeline stages 
-    stages {
-        // Deploy stage
-        stage('Deploy') {
-            steps {
-                echo 'Deploying ...'
-                // Connect to GIT and download the repo code
-                // Use the Jenkins Credentials by ID: GIT_CREDS
-                git credentialsId: 'GIT_CREDS', url: 'http://git.stratos.xfusioncorp.com/sarah/web.git'
-                // Transfer all the files we downloaded to /tmp of ststor01
-                sshPut remote: remote, from: '.', into: '/tmp'
-                // Finally move all the files from /tmp to /data on ststor01
-                sshCommand remote: remote, command: "mv -f /tmp/${JOB_NAME}/* /data"
-            }
-        }
+![alt text](image-12.png)
 
-        // Test stage
-        stage('Test') {
-            environment {
-                // Update the below value as per the text given in question
-                INDEX_CONTENT = 'Welcome to xFusionCorp Industries'
-            }
+![alt text](image-13.png)
 
-            steps {
-                // Now test that the content from default page from HTTPD on each 
-                // of the appservers is same as the index.html content required as
-                // per question
-                sh '((curl http://stapp01:8080/ | grep -F "$INDEX_CONTENT") && true)'
-                sh '((curl http://stapp02:8080/ | grep -F "$INDEX_CONTENT") && true)'
-                sh '((curl http://stapp03:8080/ | grep -F "$INDEX_CONTENT") && true)'
-            }
-        }
-    }
-}
 
-```
+### Output
 
-### Commit changes to index.html
 
-SSH to ststor01 using SSH user sarah
-Change to /home/sarah/web
-Edit index.html as per the question
+![alt text](image-16.png)
+
+![alt text](image-17.png)
+
+![alt text](image-18.png)
+
+![alt text](image-19.png)
+
+![alt text](image-20.png)
+
+
+![alt text](image-21.png)
+
 
 
